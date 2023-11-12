@@ -1,5 +1,5 @@
 import { renderToReadableStream } from 'react-dom/server';
-import Page from './page.tsx';
+import ServerPage from './server-page.tsx';
 
 const BASE_PATH = Bun.env.BASE_PATH;
 const PORT = Bun.env.PORT || 3000;
@@ -18,6 +18,8 @@ Bun.serve({
         if (await file.exists()) {
             return new Response(file); //TODO filter for insecure files
         }
-        return new Response(await renderToReadableStream(<Page {...(Object.fromEntries(url.searchParams) as any)} />));
+        return new Response(
+            await renderToReadableStream(<ServerPage {...(Object.fromEntries(url.searchParams) as any)} />)
+        );
     },
 });

@@ -21,8 +21,7 @@
     "compile-server": "bun build ./server.tsx --outfile ./dist/server --compile",
     "setup": "bun clean && mkdir -p dist && bun run get-emujs && bun run get-libretro && bun run copy-assets && bun run compile-server",
     "build": "bun build ./index.tsx --outdir ./dist",
-    "build-dev": "bun run build --watch",
-    "dev": "bun run build-dev & bun run  --watch server.tsx"
+    "dev": "bun run build --watch & bun run  --watch server.tsx"
   },
   "type": "module"
 }
