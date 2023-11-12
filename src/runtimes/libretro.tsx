@@ -8,7 +8,7 @@ declare let window: CustomWindow;
 const styles = {
     body: { width: '100vw', height: '100vh' } as React.CSSProperties,
     game: { textAlign: 'center' } as React.CSSProperties,
-    button: { marginLeft: 'calc(50vw - 30px)' } as React.CSSProperties,
+    button: { marginLeft: 'calc(50vw - 43px)' } as React.CSSProperties,
 };
 
 export default ({ rom, core, bios }: EmulatorProps) => {

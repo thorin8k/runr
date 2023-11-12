@@ -41,7 +41,7 @@ bun install
 Setup dev environment
 
 ```bash
-bun run prebuild
+bun run setup
 ```
 
 To Run:
