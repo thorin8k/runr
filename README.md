@@ -47,5 +47,5 @@ bun run setup
 To Run:
 
 ``` bash
-bun rub dev
+bun dev
 ```
