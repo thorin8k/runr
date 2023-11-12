@@ -1,9 +1,9 @@
 const objectMap = (obj, fn) =>
-  Object.fromEntries(
-    Object.entries(obj).map(
-      ([k, v], i) => [k, fn(v, k, i)]
+    Object.fromEntries(
+        Object.entries(obj).map(
+            ([k, v], i) => [k, fn(v, k, i)]
+        )
     )
-  )
 
 await Bun.build({
     entrypoints: ["index.tsx"],
