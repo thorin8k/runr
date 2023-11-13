@@ -13,5 +13,3 @@ tar zxvf ./tmp/libretro-cores.tar.gz libretro-cores-master/data/
 
 mv libretro-cores-master ./dist/libretro
 mv ./tmp/libretro.js ./dist/libretro/libretro.js
-
-sed "s/script.src = 'data/' + EJS_core + '_libretro.js'/script.src = (EJS_pathtodata || 'data/') + EJS_core + '_libretro.js'/g"
