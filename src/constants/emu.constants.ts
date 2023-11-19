@@ -1,24 +1,93 @@
-/*
-3do
-arcade
-atari2600
-atari5200
-atari7800
-jaguar
-lynx
-mame2003
-nes (or nestopia)
-n64
-nds (or desmume2015)
-gba
-gb (or mgba)
-psx (or mednafen_psx)
-snes
-sega32x
-segaCD ( or picodrive)
-segaGG
-segaMS ( or picodrive)
-segaMD ( or picodrive)
-segaSaturn
-vb
-*/
+export const EMULATORJS_PLATFORM_MAP = {
+    "3do": "3d0",
+    "3ds": null,
+    "acpc": null,
+    "amiga": null,
+    "arcade": "arcade",
+    "atari2600": "atari2600",
+    "atari5200": "atari5200",
+    "atari7800": "atari7800",
+    "atari": null,
+    "atari-jaguar-cd": "jaguar",
+    "c64": null,
+    "coleco": null,
+    "cps1": null,
+    "cps2": null,
+    "cps3": null,
+    "daphne": null,
+    "dc": null,
+    "doom": null,
+    "dos": null,
+    "fairchild": null,
+    "fba2012": null,
+    "fbneo": null,
+    "fds": null,
+    "game-and-watch": null,
+    "gamegear": null,
+    "gba": "gba",
+    "gbc": "gb",
+    "gb": "gb",
+    "genesis-slash-megadrive": "segaMD",
+    "intellivision": null,
+    "jaguar": "jaguar",
+    "lynx": "lynx",
+    "mac": null,
+    "md": "segaMD",
+    "megaduck": null,
+    "ms": null,
+    "msx2": null,
+    "msx": null,
+    "n64": "n64",
+    "nds": "nds",
+    "neogeoaes": null,
+    "neogeomvs": null,
+    "neo-geo-pocket-color": null,
+    "nes": "nes",
+    "ngc": null,
+    "ngp": null,
+    "nintendo-64dd": "n64",
+    "odyssey": null,
+    "pc-98": null,
+    "pcecd": null,
+    "pce": null,
+    "philips-cd-i": null,
+    "pippin": null,
+    "playdia": null,
+    "pocketstation": null,
+    "pokemon-mini": null,
+    "ps2": null,
+    "ps3": null,
+    "ps4": null,
+    "ps": "psx",
+    "psp": null,
+    "psvita": null,
+    "rpgmaker": null,
+    "satellaview": null,
+    "saturn": "segaSaturn",
+    "scummvm": null,
+    "sega32": "sega32x",
+    "segacd": "segaCD",
+    "sega-pico": null,
+    "segasgone": null,
+    "sgb": null,
+    "sgfx": null,
+    "sms": null,
+    "snes_alt": "snes9x",
+    "snes": "snes9x",
+    "supervision": null,
+    "switch": null,
+    "tic": null,
+    "vb": "vb",
+    "vectrex": null,
+    "videopac": null,
+    "virtualboy": "vb",
+    "wii": null,
+    "wiiu": null,
+    "win": null,
+    "wonderswan-color": null,
+    "wonderswan": null,
+    "ws": null,
+    "xbox360": null,
+    "xbox": null,
+    "xboxone": null
+}

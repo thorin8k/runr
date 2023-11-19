@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
 import { CustomWindow } from '../types/window.type';
 import { EmulatorProps } from '../types/emulator.type';
+import { getPlatformFromPath } from '../common/utils';
+import { EMULATORJS_PLATFORM_MAP } from '../constants/emu.constants';
 
 declare let window: CustomWindow;
 
@@ -10,8 +12,12 @@ const styles = {
 
 export default ({ rom, core, bios }: EmulatorProps) => {
     useEffect(() => {
+        let resolvedCore = '';
+        if (!core) {
+            resolvedCore = getPlatformFromPath(rom);
+        }
         window.EJS_player = '#game';
-        window.EJS_core = core;
+        window.EJS_core = core || EMULATORJS_PLATFORM_MAP[resolvedCore];
         //EJS_lightgun = false; // Lightgun
         window.EJS_biosUrl = bios || '';
         window.EJS_gameUrl = Bun.env.LIBRARY_PATH + rom;

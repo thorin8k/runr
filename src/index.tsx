@@ -10,7 +10,7 @@ export default () => {
     const core = window.RUNR.core;
     const bios = window.RUNR.bios;
 
-    if (!rom || !core) {
+    if (!rom) {
         return <div>Rom and Core parameters required</div>;
     }
     return (

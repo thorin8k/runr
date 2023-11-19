@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { CustomWindow } from '../types/window.type';
-import { LIBRETRO_SIMPLE_CORES, LIRETRO_MODERN_CORES } from '../constants/libretro.constants';
+import { LIBRETRO_SIMPLE_CORES, LIRETRO_MODERN_CORES, LIBRETRO_PLATFORM_MAP } from '../constants/libretro.constants';
 import { EmulatorProps } from '../types/emulator.type';
+import { getPlatformFromPath } from '../common/utils';
 
 declare let window: CustomWindow;
 
@@ -15,8 +16,12 @@ export default ({ rom, core, bios }: EmulatorProps) => {
     const [loaded, setLoaded] = useState<Boolean>(false);
 
     const load = () => {
+        let resolvedCore = '';
+        if (!core) {
+            resolvedCore = getPlatformFromPath(rom);
+        }
         window.EJS_player = '#game';
-        window.EJS_core = core;
+        window.EJS_core = core || LIBRETRO_PLATFORM_MAP[resolvedCore];
         window.EJS_biosUrl = bios || '';
         window.EJS_gameUrl = Bun.env.LIBRARY_PATH + rom;
         window.EJS_pathtodata = 'libretro/data/';

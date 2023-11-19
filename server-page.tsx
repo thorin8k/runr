@@ -1,7 +1,7 @@
 interface EmulatorProps {
     type: string;
     rom: string;
-    core: string;
+    core?: string;
     bios?: string;
 }
 

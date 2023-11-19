@@ -1,27 +1,27 @@
 {
-  "name": "rom-run",
-  "module": "index.ts",
-  "devDependencies": {
-    "@types/web": "^0.0.119",
-    "bun-types": "latest",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
-  },
-  "peerDependencies": {
-    "@types/react": "^18.0.27",
-    "@types/react-dom": "^18.0.10",
-    "bun-types": "^0.7.0",
-    "typescript": "^5.0.0"
-  },
-  "scripts": {
-    "clean": "bunx rimraf ./dist/",
-    "copy-assets": "cp ./lib ./dist -r ",
-    "get-emujs": "sh ./scripts/install-ejs.sh",
-    "get-libretro": "sh ./scripts/install-libretro.sh",
-    "compile-server": "bun build ./server.tsx --outfile ./dist/server --compile",
-    "setup": "bun clean && mkdir -p dist && bun run get-emujs && bun run get-libretro && bun run copy-assets && bun run compile-server",
-    "build": "bun build ./index.tsx --outdir ./dist",
-    "dev": "bun run build --watch & bun run  --watch server.tsx"
-  },
-  "type": "module"
+    "name": "rom-run",
+    "module": "index.ts",
+    "devDependencies": {
+        "@types/web": "^0.0.119",
+        "bun-types": "latest",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0"
+    },
+    "peerDependencies": {
+        "@types/react": "^18.0.27",
+        "@types/react-dom": "^18.0.10",
+        "bun-types": "^0.7.0",
+        "typescript": "^5.0.0"
+    },
+    "scripts": {
+        "clean": "bunx rimraf ./dist/",
+        "copy-assets": "cp ./lib ./dist -r ",
+        "get-emujs": "sh ./scripts/install-ejs.sh",
+        "get-libretro": "sh ./scripts/install-libretro.sh",
+        "compile-server": "bun build ./server.tsx --outfile ./dist/server --compile",
+        "setup": "bun clean && mkdir -p dist && bun run get-emujs && bun run get-libretro && bun run copy-assets && bun run compile-server",
+        "build": "bun build ./index.tsx --outdir ./dist",
+        "dev": "bun run build --watch & bun run  --watch server.tsx"
+    },
+    "type": "module"
 }

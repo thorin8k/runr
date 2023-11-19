@@ -15,8 +15,9 @@ Bun.serve({
         );
 
         const file = Bun.file((BASE_PATH || '.') + url?.pathname);
+        //File is forced to be in the specified BASE_PATH or in the current working directory.
         if (await file.exists()) {
-            return new Response(file); //TODO filter for insecure files
+            return new Response(file);
         }
         return new Response(
             await renderToReadableStream(<ServerPage {...(Object.fromEntries(url.searchParams) as any)} />)
