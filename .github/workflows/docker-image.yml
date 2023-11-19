@@ -1,0 +1,46 @@
+name: Generate RunR docker image
+
+on:
+  push:
+    # Pattern matched against refs/tags
+    tags:        
+      - 'v*'
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+  
+jobs:
+  build:
+        
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+      
+    steps:   
+    - uses: actions/checkout@v3
+               
+    - name: Login to GitHub Container Registry
+      uses: docker/login-action@v2
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}          
+      
+    #- name: Build the Docker image
+    #  run: docker build . --file Dockerfile --tag thorin8k/runr:$(date +%s)
+    
+    - name: Extract metadata (tags, labels) for Docker
+      id: meta
+      uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
+      with:
+        images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+            
+    - name: Build image
+      uses: docker/build-push-action@v4
+      with:
+        file: Dockerfile
+        context: .
+        push: true
+        platforms: linux/arm64,linux/amd64
+        tags: ${{ env.IMAGE_NAME }}:latest
