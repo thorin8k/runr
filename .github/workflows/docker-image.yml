@@ -22,7 +22,7 @@ jobs:
       with:
         registry: ghcr.io
         username: ${{ github.actor }}
-        password: ${{ secrets.GITHUB_TOKEN }}
+        password: ${{ secrets.TOKEN }}
       
     #- name: Build the Docker image
     #  run: docker build . --file Dockerfile --tag thorin8k/runr:$(date +%s)
