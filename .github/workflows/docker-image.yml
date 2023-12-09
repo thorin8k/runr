@@ -42,5 +42,5 @@ jobs:
         file: Dockerfile
         context: .
         push: true
-        platforms: linux/arm64,linux/amd64
+        platforms: linux/amd64
         tags: ${{ env.IMAGE_NAME }}:latest
