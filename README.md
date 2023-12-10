@@ -32,7 +32,7 @@ The system allows for several extra parameters to allow better customization:
 - `rom`: Sets the path to the rom file (required)
 - `bios`: Sets the path to the bios file (optional)
 - `core`: Sets the core needed to load the game. See bellow for more information. The system will try to identify this automatically
-- `type`: Sets the type of the runtime to execute the rom (emu || emulatorjs). Optional if DEFAULT_RUNTIME is configured.
+- `type`: Sets the type of the runtime to execute the rom (emu || libretro). Optional if DEFAULT_RUNTIME is configured.
 
 
 ## Roadmap
@@ -124,7 +124,9 @@ WIP
 ## Environment variables available
 
 ``` yaml
-LIBRARY_PATH: /library # Path where system will use to search for roms
+BASE_PATH: undefined # Only set this if the proyect files will be loaded from a different folder than default
+RELATIVE_PATH: undefined # Only set this if the deployment is done in a proxied subpath of another domain name.
+LIBRARY_PATH: /library # Path where system will use to search for roms.
 USE_THREADED: false # If the emulators should prefer threaded versions of the cores. This will improve systems like the NDS but requires to be deployed using https
 DEFAULT_RUNTIME: emu || libretro # Default runtime to be used. Ifnot specified the redirection should have a type parameter.
 [WIP]
