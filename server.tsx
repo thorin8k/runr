@@ -14,7 +14,8 @@ Bun.serve({
             `${new Date().toISOString()} - ${req.method}:: ${url?.pathname} ${JSON.stringify(url.searchParams)}`
         );
 
-        const file = Bun.file((BASE_PATH || '.') + url?.pathname);
+        const file = Bun.file((BASE_PATH || '.') + decodeURI(url?.pathname));
+        
         //File is forced to be in the specified BASE_PATH or in the current working directory.
         if (await file.exists()) {
             return new Response(file);
