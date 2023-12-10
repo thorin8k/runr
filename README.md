@@ -31,9 +31,13 @@ The system allows for several extra parameters to allow better customization:
 
 - `rom`: Sets the path to the rom file (required)
 - `bios`: Sets the path to the bios file (optional)
-- `core`: Sets the core needed to load the game. See bellow for more information
-- `type`: Sets the type of the runtime to execute the rom (emu || emulatorjs)
+- `core`: Sets the core needed to load the game. See bellow for more information. The system will try to identify this automatically
+- `type`: Sets the type of the runtime to execute the rom (emu || emulatorjs). Optional if DEFAULT_RUNTIME is configured.
 
+
+## Roadmap
+
+WIP
 
 ## Emulator Runners
 
@@ -57,13 +61,22 @@ For this we made a couple of modifications to align with the EmulatorJS implemen
 
 Here the implementation of this project is better than ours as they have its own filebrowser to load allow users to save localStorage sessions for later with authentication and so, but well... this is our first version 😅
 
+## Compatibility and Requirements
 
+WIP
+
+- 3d0: BIOS required
+- Colecovision: Only Libretro. BIOS required
+- msx: Only Libretro. BIOS required
+- odyssey2: Only Libretro. BIOS required
+- PSX: Only Libretro
+- vectrex: Only Libretro
 
 ## RomM Integration
 
 One of the goals of this project is to be able to play [RomM](https://github.com/zurdi15/romm) games in my personal library directly. 
 
-Instead of including all of this implementation in the `RomM` codebase i've decided to extract and package this sistem as a separate container.
+Instead of including all of this implementation in the `RomM` codebase i've decided to extract and package this system as a separate container.
 
 This maybe allows other systems to integrate it ass well and improves the delivery of both projects as they wont depend on each other.
 
@@ -93,7 +106,7 @@ To use it you need to configure several things:
   runr:
     ...
     environment: 
-      - RUNR_LIBRARY_PATH: /library
+      - LIBRARY_PATH: /library
     volumes:
       - /data/Roms:/library
     ...
@@ -111,9 +124,10 @@ WIP
 ## Environment variables available
 
 ``` yaml
-RUNR_LIBRARY_PATH: /library # Path where system will use to search for roms
-RUNR_USE_THREADED: false # If the emulators should prefer threaded versions of the cores. This will improve systems like the NDS but requires to be deployed using https
-WIP
+LIBRARY_PATH: /library # Path where system will use to search for roms
+USE_THREADED: false # If the emulators should prefer threaded versions of the cores. This will improve systems like the NDS but requires to be deployed using https
+DEFAULT_RUNTIME: emu || libretro # Default runtime to be used. Ifnot specified the redirection should have a type parameter.
+[WIP]
 ```
 
 # Development Setup

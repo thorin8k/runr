@@ -1,5 +1,5 @@
-export const EMULATORJS_PLATFORM_MAP = {
-    "3do": "3d0",
+export const EMULATORJS_PLATFORM_MAP: any = {
+    "3do": "3do",
     "3ds": null,
     "acpc": null,
     "amiga": null,
@@ -58,6 +58,7 @@ export const EMULATORJS_PLATFORM_MAP = {
     "ps2": null,
     "ps3": null,
     "ps4": null,
+    "psx": "psx",
     "ps": "psx",
     "psp": null,
     "psvita": null,

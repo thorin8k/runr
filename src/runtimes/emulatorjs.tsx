@@ -12,14 +12,12 @@ const styles = {
 
 export default ({ rom, core, bios }: EmulatorProps) => {
     useEffect(() => {
-        let resolvedCore = '';
-        if (!core) {
-            resolvedCore = getPlatformFromPath(rom);
-        }
+        let resolvedCore = getPlatformFromPath(rom);
+        console.log(resolvedCore);
         window.EJS_player = '#game';
         window.EJS_core = core || EMULATORJS_PLATFORM_MAP[resolvedCore];
         //EJS_lightgun = false; // Lightgun
-        window.EJS_biosUrl = bios || '';
+        window.EJS_biosUrl = bios ? Bun.env.LIBRARY_PATH + bios : '';
         window.EJS_gameUrl = Bun.env.LIBRARY_PATH + rom;
         window.EJS_pathtodata = 'emulatorjs/data/';
 

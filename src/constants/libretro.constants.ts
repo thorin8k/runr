@@ -1,16 +1,16 @@
 
-export const LIBRETRO_SIMPLE_CORES = ['gearboy', 'fceumm', 'mednafen_vb', 'gambatte', 'stella2014', 'prosystem', 'mednafen_pce_fast']
+export const LIBRETRO_SIMPLE_CORES = ['mame2003_plus', 'gearboy', 'fceumm', 'mednafen_vb', 'gambatte', 'stella2014', 'prosystem', 'mednafen_pce_fast']
 export const LIRETRO_MODERN_CORES = ['prboom', 'mednafen_psx', 'tyrquake', 'melonds', 'melonds_threaded']
 
 
-export const LIBRETRO_PLATFORM_MAP = {
-    "3do": "3d0",
+export const LIBRETRO_PLATFORM_MAP: any = {
+    "3do": "3do",
     "3ds": null,
     "acpc": null,
     "amiga": null,
-    "arcade": "arcade",
+    "arcade": "mame2003_plus",
     "atari2600": "stella2014",
-    "atari5200": "atari5200",
+    "atari5200": null,
     "atari7800": "prosystem",
     "atari": null,
     "atari-jaguar-cd": "virtualjaguar",
@@ -44,10 +44,10 @@ export const LIBRETRO_PLATFORM_MAP = {
     "msx": "bluemsx",
     "n64": "n64",
     "nds": "melonds",
-    "neogeoaes": null,
-    "neogeomvs": null,
-    "neo-geo-pocket-color": null,
-    "nes": "nes",
+    "neogeoaes": "mednafen_ngp",
+    "neogeomvs": "mednafen_ngp",
+    "neo-geo-pocket-color": "mednafen_ngp",
+    "nes": "fceumm",
     "ngc": null,
     "ngp": "mednafen_ngp",
     "nintendo-64dd": "n64",
@@ -63,6 +63,7 @@ export const LIBRETRO_PLATFORM_MAP = {
     "ps2": null,
     "ps3": null,
     "ps4": null,
+    "psx": "mednafen_psx",
     "ps": "mednafen_psx",
     "psp": null,
     "psvita": null,
