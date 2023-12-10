@@ -33,7 +33,7 @@ export default ({ type, rom, bios, core }: EmulatorProps) => {
             </head>
             <body style={{ margin: 0, background: 'black', color: 'white' }}>
                 <div id="root"></div>
-                <script type="module" src="/index.js"></script>
+                <script type="module" src="./index.js"></script>
             </body>
         </html>
     );
