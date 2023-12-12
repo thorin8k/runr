@@ -7,7 +7,7 @@ import { EMULATORJS_PLATFORM_MAP } from '../constants/emu.constants';
 declare let window: CustomWindow;
 
 const styles = {
-    body: { width: '100vw', height: '100vh' } as React.CSSProperties,
+    body: { width: '100%', height: '100%' } as React.CSSProperties,
 };
 
 export default ({ rom, core, bios }: EmulatorProps) => {

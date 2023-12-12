@@ -1,6 +1,6 @@
 # RunR (Rom Runner)
 
-This web app bundles [emulatorjs](https://github.com/EmulatorJS/EmulatorJS) and [libretrojs](https://github.com/linuxserver/libretrojs) inside a simple web server to allow management systems like [RomM](https://github.com/zurdi15/romm) to play retro games without implementing all of its dependencies.
+This web app bundles [emulatorjs](https://github.com/EmulatorJS/EmulatorJS) and [libretrojs](https://github.com/linuxserver/libretrojs) inside a simple container to allow management systems like [RomM](https://github.com/zurdi15/romm) to play retro games without implementing all of its dependencies.
 
 This project is powered by [Bun](https://bun.sh/)
 
@@ -28,10 +28,11 @@ http://localhost:3000/?rom=library/nes/game.zip&core=nes&type=emu
 
 The system allows for several extra parameters to allow better customization:
 
-- `rom`: Sets the path to the rom file (required)
-- `bios`: Sets the path to the bios file (optional)
-- `core`: Sets the core needed to load the game. See bellow for more information. The system will try to identify this automatically
 - `type`: Sets the type of the runtime to execute the rom (emu || libretro). Optional if DEFAULT_RUNTIME is configured.
+- `rom`: Sets the path to the rom file (required)
+- `platform`: Specifies the platform to emulate (optional). System will try to identify this based on the rom path.
+- `core`: Sets the core needed to load the game. See bellow for more information. The system will try to identify this automatically
+- `bios`: Sets the path to the bios file (optional)
 
 
 ## Roadmap
@@ -49,6 +50,7 @@ Features pending to be implemented:
 - [ ] Improve documentation
 - [ ] Create testing environment
 - [ ] Implement threaded cores
+- [ ] Explore emulatorjs additional parameters (ej: nes lightgun)
 
 Nice to have in the future:
 - [ ] Handle sessions across different browsers?

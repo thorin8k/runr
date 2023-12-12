@@ -7,7 +7,7 @@ import { getPlatformFromPath } from '../common/utils';
 declare let window: CustomWindow;
 
 const styles = {
-    body: { width: '100vw', height: '100vh' } as React.CSSProperties,
+    body: { width: '100%', height: '100%' } as React.CSSProperties,
     game: { textAlign: 'center' } as React.CSSProperties,
     button: { marginLeft: 'calc(50vw - 43px)' } as React.CSSProperties,
 };
