@@ -9,7 +9,7 @@ This project is powered by [Bun](https://bun.sh/)
 Playing a game:
 
 ``` 
-<url>/?rom=library/nes/game.zip&core=nes
+<url>/?rom=library/nes/game.zip&core=nes&type=emu
 ```
 
 Forcing libretro:
@@ -17,12 +17,11 @@ Forcing libretro:
 ```
 <url>/?rom=library/nes/game.zip&core=fceumm&type=libretro
 ```
-> By default it plays all games using EmulatorJS.
 
 
 For example if you deploy it in the `3000` port: 
 ``` 
-http://localhost:3000/?rom=library/nes/game.zip&core=nes
+http://localhost:3000/?rom=library/nes/game.zip&core=nes&type=emu
 ```
 
 ### Available Query Parameters
@@ -37,7 +36,23 @@ The system allows for several extra parameters to allow better customization:
 
 ## Roadmap
 
-WIP
+Features pending to be implemented:
+- [x] Execute roms with EmulatorJS
+- [x] Execute roms with LibretroJS
+- [x] Automatically detect core based on rom path
+- [x] Automatically translate cores based on platforms
+- [ ] Fully integrate with RomM
+- [x] Partial RomM integration via Bookmarklet. See #
+- [ ] Automatically resolve bios files if required. Based on configurations
+- [ ] Automatically resolve platform compatibility to choose best emulation type
+- [ ] Implement official libretro instead of linuxserver's
+- [ ] Improve documentation
+- [ ] Create testing environment
+
+Nice to have in the future:
+- [ ] Handle sessions across different browsers?
+- [ ] Netplay? Maybe? 😅
+- [ ] Check if [Nostalgist.js](https://github.com/arianrhodsandlot/nostalgist) can fit as executor
 
 ## Emulator Runners
 
@@ -82,7 +97,7 @@ This maybe allows other systems to integrate it ass well and improves the delive
 
 > Disclaimer: I don't have any relationship with the developers of `RomM` and this is just a personal project that i've created in my spare time.
 
-## How to configure `RomM`:
+### How to configure `RomM`:
 
 There is an open PR sent to the team to include the code required to run the games directly.
 
