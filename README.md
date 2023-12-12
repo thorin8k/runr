@@ -39,7 +39,7 @@ The system allows for several extra parameters to allow better customization:
 Features pending to be implemented:
 - [x] Execute roms with EmulatorJS
 - [x] Execute roms with LibretroJS
-- [x] Automatically detect core based on rom path
+- [x] Automatically detect platform based on rom path
 - [x] Automatically translate cores based on platforms
 - [ ] Fully integrate with RomM
 - [x] Partial RomM integration via Bookmarklet. See #
@@ -48,6 +48,7 @@ Features pending to be implemented:
 - [ ] Implement official libretro instead of linuxserver's
 - [ ] Improve documentation
 - [ ] Create testing environment
+- [ ] Implement threaded cores
 
 Nice to have in the future:
 - [ ] Handle sessions across different browsers?
