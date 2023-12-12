@@ -21,10 +21,11 @@ export default ({ type, rom, bios, core }: EmulatorProps) => {
     `;
 
     const style = `
-        html, 
-        body {
+    
+        html, body, #root {
             height: 100%;
         }
+
     `
 
     return (
