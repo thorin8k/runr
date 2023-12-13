@@ -104,10 +104,13 @@ This maybe allows other systems to integrate it ass well and improves the delive
 
 While i prepare everything to be directly integrated with RomM you can run your games using the following Bookmarklet code:
 ``` js
-javascript:(async function(){    const RUNR_PATH = "https://runr.thorin.es/"; const url = new URL(window.location.href); if(!url.pathname.includes("platform")){ return alert("Website not supported"); } const parts = url.pathname.split("/"); const resp = await fetch(`${url.origin}/api/platforms/${parts[2]}/roms/${parts[3]}`); const data = await resp.json(); window.open(`${RUNR_PATH}/?rom=${data?.full_path}&platform=${data?.p_slug}`); })();
+javascript:(async function(){    const RUNR_PATH = "<RUNR_URL>"; const url = new URL(window.location.href); if(!url.pathname.includes("platform")){ return alert("Website not supported"); } const parts = url.pathname.split("/"); const resp = await fetch(`${url.origin}/api/platforms/${parts[2]}/roms/${parts[3]}`); const data = await resp.json(); window.open(`${RUNR_PATH}/?rom=${data?.full_path}&platform=${data?.p_slug}`); })();
 ```
 
 To do this you just have to create a Bookmark, give it a name and paste the above code inside the URL.
+
+> Important!! Change <RUNR_URL> to the URL of your running instance of RunR. Example: http://localhost:3000
+ 
 
 ### FUTURE -> How to configure `RomM`
 
