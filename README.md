@@ -92,17 +92,26 @@ WIP
 
 ## RomM Integration
 
-One of the goals of this project is to be able to play [RomM](https://github.com/zurdi15/romm) games in my personal library directly. 
+The main goal of this project is to be able to play games directly from my personal [RomM](https://github.com/zurdi15/romm) library. 
 
 Instead of including all of this implementation in the `RomM` codebase i've decided to extract and package this system as a separate container.
 
-This maybe allows other systems to integrate it ass well and improves the delivery of both projects as they wont depend on each other.
+This maybe allows other systems to integrate it ass well and improves the delivery of both projects as they wont strongly depend on each other.
 
 > Disclaimer: I don't have any relationship with the developers of `RomM` and this is just a personal project that i've created in my spare time.
 
-### How to configure `RomM`:
+### Bookmarklet alternative
 
-There is an open PR sent to the team to include the code required to run the games directly.
+While i prepare everything to be directly integrated with RomM you can run your games using the following Bookmarklet code:
+``` js
+javascript:(async function(){    const RUNR_PATH = "https://runr.thorin.es/"; const url = new URL(window.location.href); if(!url.pathname.includes("platform")){ return alert("Website not supported"); } const parts = url.pathname.split("/"); const resp = await fetch(`${url.origin}/api/platforms/${parts[2]}/roms/${parts[3]}`); const data = await resp.json(); window.open(`${RUNR_PATH}/?rom=${data?.full_path}&platform=${data?.p_slug}`); })();
+```
+
+To do this you just have to create a Bookmark, give it a name and paste the above code inside the URL.
+
+### FUTURE -> How to configure `RomM`
+
+**There is an open PR sent to the team to include the code required to run the games directly.** WIP
 
 To use it you need to configure several things:
 
