@@ -9,7 +9,33 @@ declare let window: CustomWindow;
 const styles = {
     body: { width: '100%', height: '100%' } as React.CSSProperties,
     game: { textAlign: 'center' } as React.CSSProperties,
-    button: { marginLeft: 'calc(50vw - 43px)' } as React.CSSProperties,
+    button: { 
+        position: "absolute",
+        bottom: 65,
+        left: "50%",
+        transform: "translateX(-50%)",
+        cursor: "pointer",
+        boxSizing: "inherit",
+        display: "flex",
+        justifyContent: "center",
+        textShadow: "0 1px 1px rgba(0,0,0,0.5)",
+        fontSize: 20,
+        lineHeight: 45,
+        textTransform: "uppercase",
+        fontWeight: "bolder",
+        textDecoration: "none",
+        width: "fit-content",
+        paddingLeft: 40,
+        paddingRight: 40,
+        whiteSpace: "nowrap",
+        height: 45,
+        border: 0,
+        color: "#fff !important",
+        borderRadius: 35,
+        textAlign: "center",
+        backgroundColor: "#1AAAFF",
+        boxShadow: "0 0 0 0 #222, 0 0 0 0 #111, inset 0 0 0 0 rgba(250,250,250,0.2), inset 0 0 0 0 rgba(0,0,0,0.5)"
+    } as React.CSSProperties,
 };
 
 export default ({ rom, core, bios }: EmulatorProps) => {
