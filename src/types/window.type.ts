@@ -5,6 +5,7 @@ export interface CustomWindow extends Window {
         rom: string;
         core: string;
         bios: string;
+        platform: string;
     }
     EJS_player: string;
     EJS_core: string;

@@ -9,14 +9,15 @@ export default () => {
     const rom = window.RUNR.rom;
     const core = window.RUNR.core;
     const bios = window.RUNR.bios;
+    const platform = window.RUNR.platform;
 
     if (!rom) {
         return <div>Rom and Core parameters required</div>;
     }
     return (
         <>
-            {type == 'emu' && <EmulatorJS rom={rom} core={core} bios={bios} />}
-            {type == 'libretro' && <Libretro rom={rom} core={core} bios={bios} />}
+            {type == 'emu' && <EmulatorJS rom={rom} core={core} bios={bios} platform={platform} />}
+            {type == 'libretro' && <Libretro rom={rom} core={core} bios={bios} platform={platform} />}
         </>
     );
 };

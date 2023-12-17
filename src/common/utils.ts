@@ -10,3 +10,17 @@ export const getPlatformFromPath = (romPath: string) => {
     }
     return parts[parts.length - 2];
 }
+
+
+export const configureSystem = (romPath: string, core: string | undefined, platform: string, MAP: any) => {
+    if (core) {
+        return { core };
+    }
+
+    let resolvedPlatform = platform || getPlatformFromPath(romPath);
+
+    if (resolvedPlatform) {
+        return MAP[resolvedPlatform];
+    }
+    return null;
+}

@@ -1,11 +1,12 @@
 interface EmulatorProps {
     type: string;
     rom: string;
+    platform: string;
     core?: string;
     bios?: string;
 }
 
-export default ({ type, rom, bios, core }: EmulatorProps) => {
+export default ({ type, rom, bios, core, platform }: EmulatorProps) => {
     const script = `
     window.Bun = {
         env: {
@@ -17,6 +18,7 @@ export default ({ type, rom, bios, core }: EmulatorProps) => {
         rom,
         bios,
         core,
+        platform,
     })}
     `;
 
@@ -26,11 +28,11 @@ export default ({ type, rom, bios, core }: EmulatorProps) => {
             height: 100%;
         }
 
-    `
+    `;
 
     return (
         <html>
-            <head >
+            <head>
                 <meta
                     name="viewport"
                     content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"

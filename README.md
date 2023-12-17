@@ -127,7 +127,7 @@ To use it you need to configure several things:
     - RUNR_URL: http://localhost:3000/ # The final slash(/) is important
 ```
 
-- RunR library: The location of the library must match with the one configured in RomM. Example:
+- RunR library: The location of the library must match with the one configured in RomM. Example in docker-compose.yaml:
 ``` yaml
 
   romm:
@@ -150,16 +150,93 @@ To use it you need to configure several things:
 System is packaged as a docker container inside Github registry. For installing it the recommended method is using a `docker-compose` file like this:
 
 ```yaml
-WIP
+version: "3"
+services:
+  runr:
+    image: ghcr.io/thorin8k/runr:latest
+    container_name: runr
+    environment:
+      - DEFAULT_RUNTIME=emu
+      - LIBRARY_PATH=/library/ # The trailing slash is important
+    volumes:
+      - "/mnt/main-disk/data/Roms:/app/library"
+    ports:
+      - 4023:3000
+    restart: "unless-stopped"
+    network_mode: "bridge"
+
+```
+
+
+
+Full romm + runnr example
+
+``` yaml
+
+version: "3"
+services:
+  romm:
+    image: ghcr.io/zurdi15/romm:dev-latest
+    container_name: romm
+    environment:
+      - ROMM_DB_DRIVER=sqlite # mariadb | sqlite (default: sqlite)
+      # [Optional] Used to fetch metadata from IGDB
+      #- IGDB_CLIENT_ID=xx
+      #- IGDB_CLIENT_SECRET=xx
+      # [Optional] Use SteamGridDB as a source for covers
+      #- STEAMGRIDDB_API_KEY=xx
+      # [Optional] Will enable user management and require authentication to access the interface (disabled by default)
+      #- ROMM_AUTH_ENABLED=true # default: false
+      #- ROMM_AUTH_SECRET_KEY=<secret key> # Generate a key with `openssl rand -hex 32`
+      #- ROMM_AUTH_USERNAME=admin # default: admin
+      #- ROMM_AUTH_PASSWORD=<admin password> # default: admin
+      # [Optional] Only required if authentication is enabled
+      #- ENABLE_EXPERIMENTAL_REDIS=true # default: false
+      #- REDIS_HOST=redis # default: localhost
+      #- REDIS_PORT=6379 # default: 6379
+      #- REDIS_PASSWORD=<redis password> # [Optional] Support for secured redis
+      # [Optional] Will enable asynchronous tasks (all disabled by default)
+      - ENABLE_RESCAN_ON_FILESYSTEM_CHANGE=true # Runs a quick scan on the library when a file is added or removed
+      - RESCAN_ON_FILESYSTEM_CHANGE_DELAY=15 # Delay in seconds before running the quick scan (default: 5)
+      - ENABLE_SCHEDULED_RESCAN=true # Runs a quick scan on the library at a given time
+      - SCHEDULED_RESCAN_CRON=0 3 * * * # Cron expression for the scheduled scan (default: 0 3 * * * - At 3:00 AM every day)
+      - ENABLE_SCHEDULED_UPDATE_SWITCH_TITLEDB=true # Updates the Switch TitleDB database at a given time
+      - SCHEDULED_UPDATE_SWITCH_TITLEDB_CRON=0 4 * * * # Cron expression for the scheduled update (default: 0 4 * * * - At 4:00 AM every day)
+      - ENABLE_SCHEDULED_UPDATE_MAME_XML=true # Updates the MAME XML database at a given time
+      - SCHEDULED_UPDATE_MAME_XML_CRON=0 5 * * * # Cron expression for the scheduled update (default: 0 5 * * * - At 5:00 AM every day)
+    volumes:
+      - "./Roms:/romm/library"
+      - "./resources:/romm/resources" # [Optional] Path where roms metadata (covers) are stored
+      - "./config.yml:/romm/config.yml" # [Optional] Path where config is stored
+      - "./db:/romm/database" # [Optional] Only needed if ROMM_DB_DRIVER=sqlite or not set
+      - "./logs:/romm/logs" # [Optional] Path where logs are stored
+    ports:
+      - 8080:8080
+    restart: "unless-stopped"
+    network_mode: "bridge"
+
+  runr:
+    image: ghcr.io/thorin8k/runr:latest
+    container_name: runr
+    environment:
+      - DEFAULT_RUNTIME: emu
+      - LIBRARY_PATH: /library/ # The trailing slash is important
+    volumes:
+      - "/mnt/main-disk/data/Roms:/app/library"
+    ports:
+      - 8081:3000
+    restart: "unless-stopped"
+    network_mode: "bridge"
+
 ```
 
 ## Environment variables available
 
 ``` yaml
 BASE_PATH: undefined # Only set this if the proyect files will be loaded from a different folder than default
-RELATIVE_PATH: undefined # Only set this if the deployment is done in a proxied subpath of another domain name.
-LIBRARY_PATH: /library # Path where system will use to search for roms.
-USE_THREADED: false # If the emulators should prefer threaded versions of the cores. This will improve systems like the NDS but requires to be deployed using https
+RELATIVE_PATH: undefined # Only set this if the deployment is done in a proxied subpath of another domain name. (Currently not working with romm)
+LIBRARY_PATH: /library/ # Path used to search for roms. This is relative to the deployment directory (/app in case of docker deployment)
+USE_THREADED: false # If the emulators should prefer threaded versions of the cores. This will improve systems like the NDS but requires to be deployed using https. This is a placeholder for the future, **not implemented yet**.
 DEFAULT_RUNTIME: emu || libretro # Default runtime to be used. Ifnot specified the redirection should have a type parameter.
 [WIP]
 ```
