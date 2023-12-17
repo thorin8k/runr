@@ -42,8 +42,15 @@ export default ({ rom, core, bios, platform }: EmulatorProps) => {
     const [loaded, setLoaded] = useState<Boolean>(false);
 
     const load = () => {
+        let resolvedCore = configureSystem(rom, core, platform, LIBRETRO_PLATFORM_MAP);
+        console.log({
+            rom,
+            core,
+            platform,
+            resolvedCore,
+        });
         window.EJS_player = '#game';
-        window.EJS_core = configureSystem(rom, core, platform, LIBRETRO_PLATFORM_MAP);
+        window.EJS_core = resolvedCore;
         window.EJS_biosUrl = bios ? Bun.env.LIBRARY_PATH + bios : '';
         window.EJS_gameUrl = Bun.env.LIBRARY_PATH + rom;
         window.EJS_pathtodata = 'libretro/data/';
@@ -54,15 +61,15 @@ export default ({ rom, core, bios, platform }: EmulatorProps) => {
         script.async = true;
 
         document.body.appendChild(script);
-        createTouchpad();
+        createTouchpad(resolvedCore);
         setLoaded(true);
     };
 
-    const createTouchpad = () => {
+    const createTouchpad = (resolvedCore: string) => {
         if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-            if (LIBRETRO_SIMPLE_CORES.includes(window.EJS_core)) {
+            if (LIBRETRO_SIMPLE_CORES.includes(resolvedCore)) {
                 window.gamePadType = 'simple';
-            } else if (LIRETRO_MODERN_CORES.includes(window.EJS_core)) {
+            } else if (LIRETRO_MODERN_CORES.includes(resolvedCore)) {
                 window.gamePadType = 'modern';
             }
             const script = document.createElement('script');
