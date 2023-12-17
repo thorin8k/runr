@@ -20,7 +20,7 @@ const styles = {
         justifyContent: 'center',
         textShadow: '0 1px 1px rgba(0,0,0,0.5)',
         fontSize: 20,
-        lineHeight: 45,
+        lineHeight: '45px',
         textTransform: 'uppercase',
         fontWeight: 'bolder',
         textDecoration: 'none',
@@ -30,7 +30,7 @@ const styles = {
         whiteSpace: 'nowrap',
         height: 45,
         border: 0,
-        color: '#fff !important',
+        color: '#fff',
         borderRadius: 35,
         textAlign: 'center',
         backgroundColor: '#1AAAFF',
@@ -38,7 +38,7 @@ const styles = {
     } as React.CSSProperties,
 };
 
-export default ({ rom, core, bios, platform }: EmulatorProps) => {
+export default ({ rom, core, bios, platform, redirected }: EmulatorProps) => {
     const [loaded, setLoaded] = useState<Boolean>(false);
 
     const load = () => {
@@ -49,6 +49,14 @@ export default ({ rom, core, bios, platform }: EmulatorProps) => {
             platform,
             resolvedCore,
         });
+
+        if (!resolvedCore && Boolean(Bun.env.AUTO_REDIRECT) == true && !redirected) {
+            let url = new URL(window.location.href);
+            url.searchParams.set('type', 'emu');
+            url.searchParams.set('redirected', 'true');
+            window.location.replace(url.toString());
+        }
+
         window.EJS_player = '#game';
         window.EJS_core = resolvedCore;
         window.EJS_biosUrl = bios ? Bun.env.LIBRARY_PATH + bios : '';

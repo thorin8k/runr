@@ -4,13 +4,15 @@ interface EmulatorProps {
     platform: string;
     core?: string;
     bios?: string;
+    redirected?: boolean;
 }
 
-export default ({ type, rom, bios, core, platform }: EmulatorProps) => {
+export default ({ type, rom, bios, core, platform, redirected }: EmulatorProps) => {
     const script = `
     window.Bun = {
         env: {
-            "LIBRARY_PATH": ${JSON.stringify(Bun.env.LIBRARY_PATH)}
+            "LIBRARY_PATH": ${JSON.stringify(Bun.env.LIBRARY_PATH)},
+            "AUTO_REDIRECT": ${Bun.env.AUTO_REDIRECT}
         }
     }
     window.RUNR = ${JSON.stringify({
@@ -19,6 +21,7 @@ export default ({ type, rom, bios, core, platform }: EmulatorProps) => {
         bios,
         core,
         platform,
+        redirected
     })}
     `;
 
@@ -39,6 +42,17 @@ export default ({ type, rom, bios, core, platform }: EmulatorProps) => {
                 />
                 <meta name="apple-mobile-web-app-capable" content="yes" />
                 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+                <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png"></link>
+                <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png"></link>
+                <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png"></link>
+                <link rel="manifest" href="assets/site.webmanifest"></link>
+                <link rel="mask-icon" href="assets/safari-pinned-tab.svg" color="#5bbad5"></link>
+                <meta name="apple-mobile-web-app-title" content="RunR"></meta>
+                <meta name="application-name" content="RunR"></meta>
+                <meta name="msapplication-TileColor" content="#da532c"></meta>
+                <meta name="theme-color" content="#ffffff"></meta>
+
                 <script dangerouslySetInnerHTML={{ __html: script }} />
                 <style dangerouslySetInnerHTML={{ __html: style }} />
             </head>

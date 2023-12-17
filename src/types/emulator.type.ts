@@ -3,4 +3,5 @@ export interface EmulatorProps {
     core?: string;
     bios?: string;
     platform: string;
+    redirected?: boolean;
 }

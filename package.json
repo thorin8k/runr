@@ -15,7 +15,7 @@
     },
     "scripts": {
         "clean": "bunx rimraf ./dist/",
-        "copy-assets": "cp ./lib ./dist -r ",
+        "copy-assets": "cp ./lib ./assets ./dist -r ",
         "get-emujs": "sh ./scripts/install-ejs.sh",
         "get-libretro": "sh ./scripts/install-libretro.sh",
         "compile-server": "bun build ./server.tsx --outfile ./dist/server --compile",

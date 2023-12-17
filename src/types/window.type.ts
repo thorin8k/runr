@@ -6,6 +6,7 @@ export interface CustomWindow extends Window {
         core: string;
         bios: string;
         platform: string;
+        redirected: boolean;
     }
     EJS_player: string;
     EJS_core: string;
