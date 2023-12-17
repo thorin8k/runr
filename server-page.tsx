@@ -29,6 +29,7 @@ export default ({ type, rom, bios, core, platform, redirected }: EmulatorProps) 
     
         html, body, #root {
             height: 100%;
+            overflow: hidden;
         }
 
     `;
@@ -53,6 +54,7 @@ export default ({ type, rom, bios, core, platform, redirected }: EmulatorProps) 
                 <meta name="msapplication-TileColor" content="#da532c"></meta>
                 <meta name="theme-color" content="#ffffff"></meta>
 
+                <title>RunR</title>
                 <script dangerouslySetInnerHTML={{ __html: script }} />
                 <style dangerouslySetInnerHTML={{ __html: style }} />
             </head>

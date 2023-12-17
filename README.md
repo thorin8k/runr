@@ -53,6 +53,7 @@ Features pending to be implemented:
 - [ ] Create testing environment
 - [ ] Implement threaded cores
 - [ ] Explore emulatorjs additional parameters (ej: nes lightgun)
+- [ ] Support for 206 partial content requests for chd serving.
 
 Nice to have in the future:
 - [ ] Handle sessions across different browsers?
@@ -83,14 +84,18 @@ Here the implementation of this project is better than ours as they have its own
 
 ## Compatibility and Requirements
 
-WIP
+WIP compatibility table
 
-- 3d0: BIOS required
+- 3d0: BIOS required | **NOT WORKING**
 - Colecovision: Only Libretro. BIOS required
 - msx: Only Libretro. BIOS required
 - odyssey2: Only Libretro. BIOS required
-- PSX: Only Libretro
+- segaCD: **NOT WORKING**
+- PCE: **NOT WORKING**
 - vectrex: Only Libretro
+
+
+All chd+libretro combinations are currently bugged because of the 206 partial content requests. The systen doesn't support that yet so the rom stays loading forever.
 
 ## RomM Integration
 
