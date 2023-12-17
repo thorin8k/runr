@@ -1,4 +1,6 @@
 # RunR (Rom Runner)
+<img src="https://github.com/thorin8k/runr/assets/50626175/6b224924-7f19-4066-830e-91114e4288d6" alt="runr" style="width:200px;"/>
+
 
 This web app bundles [emulatorjs](https://github.com/EmulatorJS/EmulatorJS) and [libretrojs](https://github.com/linuxserver/libretrojs) inside a simple container to allow management systems like [RomM](https://github.com/zurdi15/romm) to play retro games without implementing all of its dependencies.
 
