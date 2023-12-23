@@ -103,7 +103,7 @@ The main goal of this project is to be able to play games directly from my perso
 
 Instead of including all of this implementation in the `RomM` codebase i've decided to extract and package this system as a separate container.
 
-This maybe allows other systems to integrate it ass well and improves the delivery of both projects as they wont strongly depend on each other.
+This maybe allows other systems to integrate it as well and improves the delivery of both projects as they wont strongly depend on each other.
 
 > Disclaimer: I don't have any relationship with the developers of `RomM` and this is just a personal project that i've created in my spare time.
 
