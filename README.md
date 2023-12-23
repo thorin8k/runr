@@ -121,15 +121,16 @@ To do this you just have to create a Bookmark, give it a name and paste the abov
 
 ### FUTURE -> How to configure `RomM`
 
-**There is an open PR sent to the team to include the code required to run the games directly.** WIP
+**There is an open PR sent to the team to include the code required to run the games directly.** https://github.com/zurdi15/romm/pull/513
 
 To use it you need to configure several things:
 
 - RomM envinronment variables:
 ``` yaml
     ...
-    - RUNR_ENABLED: true
-    - RUNR_URL: http://localhost:3000/ # The final slash(/) is important
+    - RUNR_ENABLED=true
+    - RUNR_URL=http://localhost:3000/ # The final slash(/) is important
+    - RUNR_ACTIVE_PLATFORMS=3do,arcade,atari2600,atari5200,atari7800,atari-jaguar-cd,lynx,nes,n64,nds,gba,gbc,gb,ps,snes,sg1000,sega32,segacd,gamegear,sms,genesis-slash-megadrive,saturn,vb,wonderswan,wonderswan-color,turbografx-16-slash-pc-engine-cd
 ```
 
 - RunR library: The location of the library must match with the one configured in RomM. Example in docker-compose.yaml:
@@ -143,7 +144,7 @@ To use it you need to configure several things:
   runr:
     ...
     environment: 
-      - LIBRARY_PATH: /library
+      - LIBRARY_PATH=/library
     volumes:
       - /data/Roms:/library
     ...
@@ -209,6 +210,9 @@ services:
       - SCHEDULED_UPDATE_SWITCH_TITLEDB_CRON=0 4 * * * # Cron expression for the scheduled update (default: 0 4 * * * - At 4:00 AM every day)
       - ENABLE_SCHEDULED_UPDATE_MAME_XML=true # Updates the MAME XML database at a given time
       - SCHEDULED_UPDATE_MAME_XML_CRON=0 5 * * * # Cron expression for the scheduled update (default: 0 5 * * * - At 5:00 AM every day)
+      - RUNR_ENABLED=true
+      - RUNR_URL=http://localhost:8081/
+      - RUNR_ACTIVE_PLATFORMS=3do,arcade,atari2600,atari5200,atari7800,atari-jaguar-cd,lynx,nes,n64,nds,gba,gbc,gb,ps,snes,sg1000,sega32,segacd,gamegear,sms,genesis-slash-megadrive,saturn,vb,wonderswan,wonderswan-color,turbografx-16-slash-pc-engine-cd
     volumes:
       - "./Roms:/romm/library"
       - "./resources:/romm/resources" # [Optional] Path where roms metadata (covers) are stored
