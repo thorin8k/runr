@@ -32,9 +32,9 @@ The system allows for several extra parameters to allow better customization:
 
 - `type`: Sets the type of the runtime to execute the rom (emu || libretro). Optional if DEFAULT_RUNTIME is configured.
 - `rom`: Sets the path to the rom file (required)
-- `platform`: Specifies the platform to emulate (optional). System will try to identify this based on the rom path.
-- `core`: Sets the core needed to load the game. See bellow for more information. The system will try to identify this automatically
-- `bios`: Sets the path to the bios file (optional)
+- `platform`: Specifies the platform to emulate (optional, recommended). System will try to identify this based on the rom path.
+- `core`: Sets the core needed to load the game. See bellow for more information. Force rom to execute with specific core
+- `bios`: Sets the path to the bios file (optional but required in some platforms / cores)
 
 
 ## Roadmap
