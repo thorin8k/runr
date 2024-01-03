@@ -114,6 +114,11 @@ While i prepare everything to be directly integrated with RomM you can run your 
 javascript:(async function(){    const RUNR_PATH = "<RUNR_URL>"; const url = new URL(window.location.href); if(!url.pathname.includes("platform")){ return alert("Website not supported"); } const parts = url.pathname.split("/"); const resp = await fetch(`${url.origin}/api/platforms/${parts[2]}/roms/${parts[3]}`); const data = await resp.json(); window.open(`${RUNR_PATH}/?rom=${data?.full_path}&platform=${data?.p_slug}`); })();
 ```
 
+For 2.2.0+ (thanks @karl0ss)
+``` js
+javascript:(async function(){    const RUNR_PATH = "<RUNR_URL>"; const url = new URL(window.location.href); if(!url.pathname.includes("platform")){ return alert("Website not supported"); } const parts = url.pathname.split("/"); const resp = await fetch(`${url.origin}/api/roms/${parts[3]}`);const data = await resp.json();window.open(`${RUNR_PATH}/?rom=${data?.full_path}&platform=${data?.platform_slug.toLowerCase()}`);})();
+```
+
 To do this you just have to create a Bookmark, give it a name and paste the above code inside the URL.
 
 > Important!! Change <RUNR_URL> to the URL of your running instance of RunR. Example: http://localhost:3000
